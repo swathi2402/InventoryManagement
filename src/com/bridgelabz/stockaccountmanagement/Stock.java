@@ -4,13 +4,16 @@ public class Stock {
 	private String name;
 	private int numberOfShares;
 	private double sharePrice;
+	private double value;
 
 	public Stock(String name, int numberOfShares, double sharePrice) {
 		super();
 		this.name = name;
 		this.numberOfShares = numberOfShares;
 		this.sharePrice = sharePrice;
+		this.value = 0;
 	}
+
 
 	public String getName() {
 		return name;
@@ -34,5 +37,13 @@ public class Stock {
 
 	public void setSharePrice(double sharePrice) {
 		this.sharePrice = sharePrice;
+	}
+	
+	public double getValue() {
+		return value;
+	}
+	
+	public void setValue(double value) {
+		this.value = value;
 	}
 }
