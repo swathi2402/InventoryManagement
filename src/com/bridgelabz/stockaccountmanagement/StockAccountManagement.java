@@ -11,6 +11,7 @@ public class StockAccountManagement {
 		stockAccount.sell(100, "abc");
 		stockAccount.printReport();
 		stockAccount.stackDisplay();
+		stockAccount.dateTimeDisplay();
 	}
 
 }
