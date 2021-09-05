@@ -88,4 +88,15 @@ public class StockAccount {
 		}
 	}
 
+	public void printReport() {
+		MyNode<Stock> tempNode = (MyNode<Stock>) stocksList.head;
+		System.out.println("------ Stock Report ------");
+		while (tempNode != null) {
+			System.out.println("Name: " + tempNode.getKey().getName());
+			System.out.println("Number of shares: " + tempNode.getKey().getNumberOfShares());
+			System.out.println("Share price: " + tempNode.getKey().getSharePrice());
+			System.out.println("Total amount: " + tempNode.getKey().getValue());
+			tempNode = (MyNode<Stock>) tempNode.getNext();
+		}
+	}
 }
