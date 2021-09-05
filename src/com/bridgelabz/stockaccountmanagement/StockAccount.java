@@ -4,10 +4,13 @@ import java.util.Scanner;
 
 import com.bridgelabz.linkedlist.MyLinkedList;
 import com.bridgelabz.linkedlist.MyNode;
+import com.bridgelabz.stack.MyStack;
 
 public class StockAccount {
 	private MyLinkedList<Stock> stocksList = new MyLinkedList<Stock>();
-
+	private MyStack<String> myPurchase = new MyStack<String>();
+	private MyStack<String> mySelling = new MyStack<String>();
+	
 	public void addStocks() {
 		System.out.println("Enter the number of Stocks that want to add: ");
 		Scanner scanner = new Scanner(System.in);
@@ -44,6 +47,8 @@ public class StockAccount {
 				int noOfShares = (int) (amount / sharePrice);
 				int orginalNoOfShare = tempNode.getKey().getNumberOfShares();
 				tempNode.getKey().setNumberOfShares(noOfShares + orginalNoOfShare);
+				MyNode<String> nameInStack = new MyNode<String>(name);
+				myPurchase.push(nameInStack);
 				System.out.println(noOfShares + " shares are added to " + name);
 			}
 			tempNode = (MyNode<Stock>) tempNode.getNext();
@@ -53,6 +58,8 @@ public class StockAccount {
 			int noOfShares = (int) (amount / sharePrice);
 			int orginalNoOfShare = tempNode.getKey().getNumberOfShares();
 			tempNode.getKey().setNumberOfShares(noOfShares + orginalNoOfShare);
+			MyNode<String> nameInStack = new MyNode<String>(name);
+			myPurchase.push(nameInStack);
 			System.out.println(noOfShares + " shares are added to " + name);
 		}
 	}
@@ -67,6 +74,8 @@ public class StockAccount {
 				int sell = orginalNoOfShare - noOfShares;
 				if (sell > 0) {
 					tempNode.getKey().setNumberOfShares(sell);
+					MyNode<String> nameInStack = new MyNode<String>(name);
+					mySelling.push(nameInStack);
 					System.out.println(noOfShares + " shares are sold from " + name);
 				} else {
 					System.out.println("You have not enough shares");
@@ -81,6 +90,8 @@ public class StockAccount {
 			int sell = orginalNoOfShare - noOfShares;
 			if (sell > 0) {
 				tempNode.getKey().setNumberOfShares(sell);
+				MyNode<String> nameInStack = new MyNode<String>(name);
+				mySelling.push(nameInStack);
 				System.out.println(noOfShares + " shares are sold from " + name);
 			} else {
 				System.out.println("You have not enough shares");
@@ -98,5 +109,12 @@ public class StockAccount {
 			System.out.println("Total amount: " + tempNode.getKey().getValue());
 			tempNode = (MyNode<Stock>) tempNode.getNext();
 		}
+	}
+	
+	public void stackDisplay() {
+		System.out.println("Names of the stocks which were purchased");
+		myPurchase.printStack();
+		System.out.println("Names of the stocks which were sold");
+		mySelling.printStack();
 	}
 }

@@ -7,9 +7,10 @@ public class StockAccountManagement {
 		StockAccount stockAccount = new StockAccount();
 		stockAccount.addStocks();
 		stockAccount.calculateValues();
-//		stockAccount.buy(100, "abc");
-//		stockAccount.sell(100, "abc");
+		stockAccount.buy(100, "abc");
+		stockAccount.sell(100, "abc");
 		stockAccount.printReport();
+		stockAccount.stackDisplay();
 	}
 
 }
