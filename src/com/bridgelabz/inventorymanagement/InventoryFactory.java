@@ -5,10 +5,10 @@ import java.util.Scanner;
 import com.bridgelabz.linkedlist.MyLinkedList;
 import com.bridgelabz.linkedlist.MyNode;
 
-public class DataManagement {
+public class InventoryFactory {
 	MyLinkedList<Inventory> myInventory = new MyLinkedList<Inventory>();
 
-	public void getInventory() {
+	public MyLinkedList<Inventory> getInventory() {
 		System.out.println("Enter total number of inventories: ");
 		Scanner scanner = new Scanner(System.in);
 		int count = scanner.nextInt();
@@ -25,15 +25,6 @@ public class DataManagement {
 			myInventory.append(myStockNode);
 		}
 		scanner.close();
-	}
-
-	public void calculateValue() {
-		MyNode<Inventory> tempNode = (MyNode<Inventory>) myInventory.head;
-		while (tempNode != null) {
-			Inventory current = tempNode.getKey();
-			double value = (current.getPrice() * current.getWeight());
-			System.out.println("Value for inventory '" + current.getName() + "' is: " + value);
-			tempNode = (MyNode<Inventory>) tempNode.getNext();
-		}
+		return myInventory;
 	}
 }
